@@ -1,3 +1,5 @@
+oldFile = "C:\\ClamAV\\conf_examples\\freshclam.conf.sample"
+newFile = "C:\\ClamAV\\freshclam.conf"
 def config_edit_example_text():
     # Erase the Example text placeholder
     # in order for clamav to read the file. Otherwise
@@ -7,14 +9,14 @@ def config_edit_example_text():
     # file. config_fix_example adds it back in for cosmetic
     # reasons.
     # Read in the file
-    with open('C:\\ClamAV\\conf_examples\\freshclam.conf.sample', 'r') as file:
+    with open(oldFile, 'r') as file:
         filedata = file.read()
 
     # Replace the target string
     filedata = filedata.replace('Example', '')
 
     # Write the file out again
-    with open('C:\\ClamAV\\freshclam.conf', 'w') as file:
+    with open(newFile, 'w') as file:
       file.write(filedata)
 
 def config_fix_example():
@@ -22,14 +24,14 @@ def config_fix_example():
     # also erases the word Example from the comment in the conf file.
     # this adds it back in.
     # Read in the file
-    with open('C:\\ClamAV\\freshclam.conf', 'r') as file:
+    with open(newFile, 'r') as file:
       filedata = file.read()
 
     # Replace the target string
-    filedata = filedata.replace('##  config file for the Clam AV daemon', '## Example config file for the Clam AV daemon')
+    filedata = filedata.replace('##  config file for freshclam', '## Example config file for freshclam')
 
     # Write the file out again
-    with open('C:\\ClamAV\\freshclam.conf', 'w') as file:
+    with open(newFile, 'w') as file:
         file.write(filedata)
 config_edit_example_text()
 config_fix_example()
